@@ -174,12 +174,10 @@ html = """
     // Enable or disable the button based on can_msg
     btn.disabled = !can_msg;
 
-    alert(`Connected to room ${room}`);
+    
   });
   
-  socket.on("partner_not_found", function() {
-    alert("User not found all are vacant");
-  });
+ 
 
   function send() {
     if (typeof room == "undefined" || !can_msg) return; // Prevent sending messages if can_msg is false
@@ -212,9 +210,7 @@ html = """
     `;
     dis.appendChild(newDiv);
   }
-  socket.on('alert' , function(msg){
-       alert(msg )
-  })
+  
 </script>
 </body>
 </html>
