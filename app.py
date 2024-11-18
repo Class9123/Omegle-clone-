@@ -166,6 +166,7 @@ html = """
 
   // Initially disable the button
   btn.disabled = true;
+  input.disabled = true;
 
   socket.on("Your_room", (data) => {
     room = data["room"];
@@ -173,7 +174,7 @@ html = """
     
     // Enable or disable the button based on can_msg
     btn.disabled = !can_msg;
-
+    input.disabled = !can_msg ;
     
   });
   
