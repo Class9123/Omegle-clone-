@@ -1,4 +1,5 @@
 html = """
+
 <!DOCTYPE html>
   <html lang="en">
   <head>
@@ -14,7 +15,7 @@ html = """
   <style>
 :root {
     --body-color: #f0f4f9;
-    --header-bg: linear-gradient(45deg, black,white, gray );
+    --header-bg: linear-gradient(45deg,white, gray );
     --you-bg: #C6E7FF;
     /* Light green background for user's messages */
     --friend-bg: #FFF6E9;
@@ -22,14 +23,22 @@ html = """
   }
   
   .header{
-    color: green;
-    font-weight: 300;
-    font-size: 20px;
-    text-align: center;
-    height: 10vw;
+    
+    font-weight: 800;
+    font-size: 25px;
+    text-align: left;
+    padding: 10px;
+    padding-top: 2px;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-    width: 100vw;
+    
+    width: calc( 100vw - 20px  );
     background-image: var(--header-bg);
+    .status{
+      font-size: 14px;
+      font-weight: 200;
+      margin-top: -10px;
+      color: red;
+    }
   }
 
     body {
@@ -145,7 +154,10 @@ html = """
   </style>
 </head>
 <body>
-  <div class="header"> Omegle clone </div>
+  <div class="header"> 
+  Omegle clone 
+   <div id="status" class="status">not connected </div>
+  </div>
   <div id="chat" class="chat">
   </div>
   <footer>
@@ -174,11 +186,17 @@ html = """
     
     // Enable or disable the button based on can_msg
     btn.disabled = !can_msg;
-    input.disabled = !can_msg ;
+    input.disabled = !can_msg;
+    const status = document.getElementById("status");
+    if (can_msg) {
+        status.textContent = "Connected";
+        status.style.color = "green";
+    } else {
+        status.textContent = "Not Connected";
+        status.style.color = "red";
+    }
     
   });
-  
- 
 
   function send() {
     if (typeof room == "undefined" || !can_msg) return; // Prevent sending messages if can_msg is false
@@ -215,6 +233,7 @@ html = """
 </script>
 </body>
 </html>
+
 
 """
 
