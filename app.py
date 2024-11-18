@@ -251,7 +251,10 @@ def index():
 	session.permanent = True 
 	session.clear()
 	return render_template_string(html)
-		
+
+@app.route("/alive")
+def alive():
+	return "Alive"
 		
 @sio.on('connect')
 def connect ():
