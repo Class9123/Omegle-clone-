@@ -212,6 +212,9 @@ html = """
     `;
     dis.appendChild(newDiv);
   }
+  socket.on('alert' , function(msg){
+       alert(msg )
+  })
 </script>
 </body>
 </html>
@@ -268,11 +271,13 @@ def connect ():
 		db[ room ] = True 
 		join_room ( room )
 		can_msg = True 
+		msg = "A user connected to your room "
+		emit ('alert' , msg   , room = room )
 		
 	session ["room"] = room
 	data = { "room":room , "can_msg":can_msg  }
 	# your room or the room that you have joined
-	emit("Your_room" , data)
+	emit("Your_room" , data , room = room)
 	
 @sio.on('disconnect')
 def disconnect():
