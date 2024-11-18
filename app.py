@@ -230,7 +230,7 @@ import random
 app = Flask(__name__)
 CORS(app)
 app.secret_key ="5364+&42_gsbvj"
-sio = SocketIO(app)
+sio = SocketIO(app,cors_allowed_origins="*")
 
 # schema 
 # db = { room : #ocuupied True / False , .. }
